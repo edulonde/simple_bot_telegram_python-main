@@ -3,6 +3,7 @@ from telegram.ext import Updater, InlineQueryHandler, CommandHandler
 from telegram.ext.dispatcher import run_async
 import requests
 import re
+import os
 
 #Criação de função para pegar URL da imagem e de função para checar se o link é uma imagem
 #DOG
@@ -109,7 +110,7 @@ def zoo(update, context):
 
 def main():
     #atualiza o BOT
-    updater = Updater('TOKEN', use_context=True)
+    updater = Updater(os.getenv('BOT_TOKEN'), use_context=True)
     dp = updater.dispatcher
     #associa as funções criadas no código com os comando no Telegram
     dp.add_handler(CommandHandler('dog', dog))
